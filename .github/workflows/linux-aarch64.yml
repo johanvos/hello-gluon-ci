@@ -29,7 +29,7 @@ jobs:
       - name: Install SYSROOT (Linux)
         run: |
           mkdir -p $HOME/sysroot && cd $HOME/sysroot
-          wget "https://drive.google.com/file/d/1Jkay5sYpKbm5Gta9CHE1f28Q82_2yVP9/view?usp=sharing"
+          wget "https://download2.gluonhq.com/substrate/aarch64sysroot.zip"
           unzip aarch64sysroot.zip
         env:
           SYSROOT: $HOME/sysroot/aarch64
