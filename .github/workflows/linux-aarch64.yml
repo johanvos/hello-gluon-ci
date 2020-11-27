@@ -31,7 +31,7 @@ jobs:
 
       - name: Install SYSROOT (Linux)
         run: |
-          mkdir -p $HOME/sysroot && cd $HOME/sysroot
+          mkdir -p $GITHUB_WORKSPACE/sysroot && cd $GITHUB_WORKSPACE/sysroot
           wget "https://download2.gluonhq.com/substrate/aarch64sysroot.zip"
           unzip aarch64sysroot.zip
 
@@ -40,7 +40,7 @@ jobs:
         run: mvn -Plinux-aarch64 client:build client:package
         env:
           GRAALVM_HOME: ${{ env.JAVA_HOME }}
-          SYSROOT: $HOME/sysroot/aarch64
+          SYSROOT: ${{ env.GITHUB_WORKSPACE }}/sysroot/aarch64
 
       - name: Copy native client to staging
         run: cp -r target/client/aarch64-linux/HelloGluon* staging
