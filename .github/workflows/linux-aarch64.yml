@@ -40,7 +40,7 @@ jobs:
           SYSROOT: $HOME/sysroot/aarch64
 
       - name: Copy native client to staging
-        run: cp -r target/client/x86_64-linux/HelloGluon* staging
+        run: cp -r target/client/aarch64-linux/HelloGluon* staging
 
       - name: Upload
         uses: actions/upload-artifact@v2
