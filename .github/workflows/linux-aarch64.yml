@@ -31,15 +31,13 @@ jobs:
           mkdir -p $HOME/sysroot && cd $HOME/sysroot
           wget "https://download2.gluonhq.com/substrate/aarch64sysroot.zip"
           unzip aarch64sysroot.zip
-        env:
-          SYSROOT: $HOME/sysroot/aarch64
-
 
 
       - name: Gluon Build
         run: mvn -Plinux-aarch64 client:build client:package
         env:
           GRAALVM_HOME: ${{ env.JAVA_HOME }}
+          SYSROOT: $HOME/sysroot/aarch64
 
       - name: Copy native client to staging
         run: cp -r target/client/x86_64-linux/HelloGluon* staging
